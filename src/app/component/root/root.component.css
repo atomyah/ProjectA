@@ -1,0 +1,64 @@
+#footer{
+    text-align: right;
+    color:white;
+    font-size: 0.7em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* このCSSでコンテンツを自動で枠内で折り返す。height: initial !important;とword-wrap: break-word !important;とwhite-space: pre-wrap !important; */
+.mat-toolbar-row.mat-toolbar-row-word-wrap {
+    height: initial !important;
+    margin: 2px;
+    padding-bottom: 5px;
+  }
+  .mat-toolbar-row-word-wrap .mat-line {
+    word-wrap: break-word !important; 
+    white-space: pre-wrap !important;
+    font-size: 0.8em;
+    color: wheat;
+  }
+
+  .fill-remaining-space {
+    /* このCSSでフレックスに空白を埋める. */
+    flex: 1 1 auto;
+  }
+
+.docs-header-background{
+  background: #e91e63;
+  overflow: hidden;
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}  
+
+.fill-remaining-space {
+  /* このCSSでフレックスに空白を埋める. */
+  flex: 1 1 auto;
+}
+
+
+ .docs-app-background {
+  background: black; 
+ }
+
+.docs-header-section {
+   text-align: center;
+   display: block;
+   padding-top: 15px;
+ }
+
+ .docs-header-headline span {
+  color: white;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 56px;
+  margin: 15px 300px;
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+ }
+
+ .docs-header-headline p {
+  color: white;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 26px;
+  margin: 30px 5px;
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;  
+ }

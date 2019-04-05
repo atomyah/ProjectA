@@ -1,0 +1,101 @@
+<body class="docs-app-background">
+<!--ヘッダ-->
+<mat-toolbar
+    color="primary"
+    style="position:fixed;top:0;left:0;height:fit-content;width: 100%; max-width:1024px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); z-index: 2;"
+>
+    <!--上のbox-shadowはmat-toolbarの下に影をつけている。-->
+
+<!--ヘッダ１段目のtoolbar-row-->
+<!--mat-toolbar-row-word-wrapのCSSはroot.component.cssを参照。コンテンツを自動で枠内で折り返す-->
+  <mat-toolbar-row class="mat-toolbar-row-word-wrap"
+    color="">
+    <button mat-icon-button
+        [matMenuTriggerFor]="menu"
+        color="accent">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+  <!--ヘッダータイトルとベンゾインフォジャパンの表示-->
+  <!--1列のmat-toolbarで右寄りになってしまう文字列を適度な位置にする方法：class="fill-remaining-space"のCSSにはflex: 1 1 auto;とする-->
+  <h1>プロジェクトAプレゼンテーション</h1>
+  <span class="fill-remaining-space"></span>
+  <i class="material-icons">contact_support</i>
+
+  <!--3本線のバーガーメニュー-->
+    <mat-menu #menu="matMenu">
+       <button mat-menu-item
+            (click)="goHome()">
+            <span>ホーム</span>
+       </button>
+
+       <button mat-menu-item
+            (click)="goIntroduction()">
+            <span>プロジェクトA概論</span>
+        </button>
+
+
+        <button mat-menu-item
+            (click)="search()">
+            <span>プロジェクトA基礎</span>
+        </button>
+
+        <button mat-menu-item
+            (click)="favorite()">
+            <span>プロジェクトA一般</span>
+        </button>
+
+        <button mat-menu-item
+            (click)="setting()">
+             <span>プロジェクトA特殊</span>
+        </button>
+    </mat-menu>
+  </mat-toolbar-row>
+
+
+  <!--ヘッダ2段目のtoolbar-row-->
+   <mat-toolbar-row 
+    style="position:relative;left:0;height:fit-content;width: 100%; max-width:1024px; z-index: 2;"
+        color="">
+            <div>
+                <button mat-button (click)="goHome()"><mat-icon>home</mat-icon></button>
+                <button mat-button (click)="goIntroduction()">プロジェクトA概論</button>
+                <button mat-button (click)="goBasics()">プロジェクトA基礎</button>
+                <button mat-button>プロジェクトA一般</button>
+                <button mat-button>プロジェクトA特殊</button>
+              </div>
+   </mat-toolbar-row>
+</mat-toolbar>
+
+<!--
+<header class="docs-header-background">
+        <div class="docs-header-section">
+            <div class="docs-header-headline">
+                <span>Project A</span>
+                <p>Material Design components for Angular</p>
+                <button mat-raised-button style="margin:20px;">Get Started!</button>
+            </div>
+        </div>
+</header>
+-->
+
+
+<!--各コンポーネントを入れる枠内(上、ヘッダー部分140pxあける-->
+<div style="position: absolute;top:86px;left:0px; width: 100%; max-width:1024px; ">
+        <router-outlet class="myContainerMain"></router-outlet>
+</div>
+
+<!--フッター-->
+<mat-toolbar
+    color="primary"
+    style="position:fixed;bottom:0;left:0;height:30px;width: 100%; max-width:1024px; z-index: 2; justify-content: center"
+>
+    <div id="footer">
+        <span>Copyright © projectA</span>
+    </div>
+</mat-toolbar>
+
+
+
+</body>

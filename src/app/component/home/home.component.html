@@ -1,0 +1,85 @@
+<div class="myContainerMain">
+  <table>
+      <thead>
+        <tr><th>id</th><th>content</th><th>Intl</th><th>name</th><th>edit_flag</th><th>edit button</th><th>delete button</th></tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of comments | async">       
+        <td>{{ item.id }}</td>
+      <!-- edit_flagによって編集フィールドを切り替える -->
+        <td>  
+          <ng-container *ngIf="!item.edit_flag">
+            {{item.content}}
+          </ng-container>
+          <ng-container *ngIf="item.edit_flag">
+              <input type="text" class="form-control" [(ngModel)]="item.content" name="edit_content">
+          </ng-container>
+        </td>
+        <td>
+          <ng-container *ngIf="!item.edit_flag">          
+            {{ item.initial }}
+          </ng-container>
+          <ng-container *ngIf="item.edit_flag">
+              <input type="text" size="1" class="form-control" [(ngModel)]="item.initial" name="edit_initial">
+          </ng-container>            
+        </td>
+        <td>
+          <ng-container *ngIf="!item.edit_flag">  
+            {{ item.user.name }}
+          </ng-container>
+          <ng-container *ngIf="item.edit_flag">
+              <input type="text" class="form-control" [(ngModel)]="item.user.name" name="edit_username">
+          </ng-container>                  
+        </td>
+        <td>{{ item.edit_flag }}</td>
+        <td>
+            <div class="example-button-row">
+              <ng-container *ngIf="!item.edit_flag">  
+                <button mat-button color="accent" (click)="toggleEditComment(item)">編集</button><!-- 追加 -->
+              </ng-container>
+              <ng-container *ngIf="item.edit_flag">
+                  <button mat-button color="accent" (click)="toggleEditComment(item)">編集やめる</button><!-- 追加 -->
+              </ng-container>  
+            </div>
+        </td>
+        <td>
+            <div class="example-button-row">
+             <ng-container *ngIf="!item.edit_flag">  
+                <button mat-button color="warn" (click)="deleteComment(item)">削除</button><!-- 追加 -->
+             </ng-container>
+             <ng-container *ngIf="item.edit_flag">
+                <button mat-button color="primary" (click)="saveEditComment(item)">保存</button><!-- 追加 -->
+            </ng-container>  
+            </div>
+        <!-- edit_flagによる切り替え作業ここまで -->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <br /><br />
+
+    <form [formGroup]="commentForm" (ngSubmit)="addCommentData()">       
+        <div class="yokonarabi">
+            <mat-form-field>
+               <mat-label>content</mat-label>
+                 <input matInput placeholder="Textarea" formControlName="content">
+           </mat-form-field>
+           <mat-form-field>
+               <mat-label>initial</mat-label>
+                 <input matInput placeholder="Input" formControlName="initial">
+           </mat-form-field>
+           <mat-form-field>
+               <mat-label>name</mat-label>
+                 <input matInput placeholder="Input" formControlName="username">
+           </mat-form-field>
+                 <br />
+        </div>
+        <div class="yokonarabi">
+            <button type="submit" mat-flat-button color="accent"  [disabled]="!commentForm.valid">add comment</button>
+        </div>
+    </form>
+
+
+
+</div>
