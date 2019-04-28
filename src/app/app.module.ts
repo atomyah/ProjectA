@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire';  // 追加
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
 
+
 //Material2モジュールのインポート
 import {
   MatButtonModule,
@@ -39,6 +40,7 @@ import {RootComponent} from './component/root/root.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.route';
 import { HomeComponent } from './component/home/home.component';
+import { LoginComponent } from './component/login/login.component';
 
 //アプリで使用するモジュール定義
 @NgModule({
@@ -73,6 +75,7 @@ import { HomeComponent } from './component/home/home.component';
   declarations: [
     RootComponent,
     HomeComponent,
+    LoginComponent,
   ],
 
   // DIするサービス 

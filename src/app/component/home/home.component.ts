@@ -4,6 +4,7 @@ import { Comments } from '../../class/comments';  // commentsデータタイプ�
 import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { map } from "rxjs/operators"; // 追加
+import { AuthService } from  '../../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,11 @@ export class HomeComponent implements OnInit {
   commentsRef: AngularFirestoreCollection<Comments>;
   comments: Observable<Comments[]>;
 
-  constructor(private db: AngularFirestore, private fb: FormBuilder) { // FormBuilderを追加
-    this.commentsRef = this.db.collection<Comments>('comments');
+
+
+  constructor(private db: AngularFirestore, private fb: FormBuilder,private authService: AuthService) {
+
+    this.commentsRef = this.db.collection<Comments>('comments') //, ref => ref.where('initial', '==', this.SearchByInitial))
     this.comments = this.commentsRef.snapshotChanges().pipe
       (map(actions => {
       return actions.map(action => {

@@ -1,0 +1,17 @@
+<div class="myContainerMain">
+ <div style="yokonarabi">
+  <mat-form-field>
+    <input matInput type="email" placeholder="Email" #userEmail required autofocus>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" #userPassword required>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <button mat-flat-button color="accent" (click)="authService.login(userEmail.value, userPassword.value)">Login</button>
+  </mat-form-field>
+</div>
+
+</div>
